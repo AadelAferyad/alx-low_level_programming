@@ -1,6 +1,6 @@
 #include <unistd.h>
 /**
- * main The Entry point
+ * main Entry point
  *
  * write: print the string to stdout
  * Return: Always 1
