@@ -1,10 +1,12 @@
 #include <unistd.h>
 /**
- * main Entry point
+ * main - Entry point
  *
- * write: print the string to stdout
+ * This program uses the write function to print a specific string to
+ * the standard error output.
+ *
  * Return: Always 1
-*/
+ */
 int main(void)
 {
 	write(2,
