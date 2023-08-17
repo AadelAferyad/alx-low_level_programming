@@ -3,7 +3,7 @@
 /**
  * _isupper - check if a char is uppercase
  * @c: ascci value
- * Return: largest number
+ * Return: 1 if it's uppercase if not return 0
  */
 
 int _isupper(int c)
