@@ -10,7 +10,7 @@ int _atoi(char *s)
 {
 	int i = 0;
 
-	int h = 0;
+	unsigned int h = 0;
 
 	int bool = 0;
 	int sign = 1;
