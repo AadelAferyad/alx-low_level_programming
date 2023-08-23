@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
 	* _strncpy - coppy a string
@@ -19,7 +18,7 @@ char *_strncpy(char *dest, char *src, int n)
 		dest[i] = src[i];
 		i++;
 	}
-	if (src[i] == '\0')
+	for (; i < n; i++)
 		dest[i] = '\0';
 	return (dest);
 }
