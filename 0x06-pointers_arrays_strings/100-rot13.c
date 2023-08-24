@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
 	*	rot13 - is a letter substitution cipher
 	*
@@ -11,19 +10,16 @@
 
 char *rot13(char *s)
 {
-	int i = 0, j = 0;
-	char sp_char[] = "n";
+	int i = 0;
 
 	while (s[i])
 	{
-		j = i;
 		while ((s[i] >= 97 && s[i] <= 122) || (s[i] >= 65 && s[i] <= 90))
 		{
 			if ((s[i] >= 'n' && s[i] <= 'z') || (s[i] >= 'N' && s[i]  <= 'Z'))
 			{
 				s[i] = (int) s[i] - 13;
 				i++;
-				j++;
 				continue;
 			}
 			s[i] += 13;
