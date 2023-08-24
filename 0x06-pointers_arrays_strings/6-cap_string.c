@@ -14,7 +14,8 @@
 char *cap_string(char *s)
 {
 		int i = 0, j = 0, checker = 0;
-		char sp[] = " \t\n,;.!?()\"{}";
+		char sp[] = {' ', '\t', '\n', ',', ';', '.'
+		, '!', '?', '"', '(', ')', '{', '}'};
 
 		while (s[i] != '\0')
 		{
@@ -23,27 +24,23 @@ char *cap_string(char *s)
 			{
 				if ((int) s[i] == (int) sp[j])
 				{
-					if (s[i] == '\t')
-						s[i] = 32;
-					checker = 1;
-					i++;
-					break;
+					if (s[i + 1] >= 97 && s[i + 1] <= 122)
+					{
+						s[i + 1] = (int) s[i + 1] - 32;
+						i++;
+						checker = 1;
+						break;
+					}
 				}
 				j++;
 			}
-			if (checker == 1 && s[i] >= 97 && s[i] <= 122)
-			{
-				checker = 0;
-				s[i] = (int) s[i] - 32;
-				continue;
-			}
-			else if (checker == 1)
+			if (checker)
 			{
 				checker = 0;
 				continue;
 			}
-			else
-				i++;
+
+			i++;
 		}
 		return (s);
 }
