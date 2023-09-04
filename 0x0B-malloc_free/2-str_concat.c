@@ -85,6 +85,6 @@ char *str_concat(char *s1, char *s2)
 		p[j] = '\0';
 	}
 	else
-		return (NULL);
+		return (0);
 	return (p);
 }
