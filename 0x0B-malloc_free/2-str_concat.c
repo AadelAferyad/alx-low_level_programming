@@ -34,18 +34,20 @@ char *_strcat(char *dest, char *src)
 	int i, j = 0;
 
 	i = _strlen(dest);
-
-	while (src[j])
+	if (dest != NULL && src == NULL)
+		return (dest);
+	else if ((dest == NULL && src != NULL) || (dest != NULL && src != NULL))
 	{
-		dest[i] = src[j];
-		i++;
-		j++;
+		while (src[j])
+		{
+			dest[i] = src[j];
+			i++;
+			j++;
+		}
+		dest[i] = '\0';
 	}
-	dest[i] = '\0';
-
 	return (dest);
 }
-
 /**
  * str_concat - function concatenate strings in the heap.
  *
@@ -58,17 +60,31 @@ char *_strcat(char *dest, char *src)
 char *str_concat(char *s1, char *s2)
 {
 	char *p;
-	int i = 0, j = 0, k;
+	int i = 0, j = 0;
 
 	i = _strlen(s1) + _strlen(s2);
 	p = (char *) malloc(i + 1);
-	k = _strlen(s1);
-
-	while (j < k)
-	{
-		p[j] = s1[j];
-		j++;
+	if (p == NULL)
+		return (NULL);
+	if (s1 != NULL)
+		{
+		while (s1[j])
+		{
+			p[j] = s1[j];
+			j++;
+		}
+		p = _strcat(p, s2);
 	}
-	p = _strcat(p, s2);
+	else if (s2 != NULL)
+	{
+		while (s2[j])
+		{
+			p[j] = s2[j];
+			j++;
+		}
+		p[j] = '\0';
+	}
+	else
+		return (NULL);
 	return (p);
 }
