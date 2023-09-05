@@ -16,10 +16,10 @@ int w_strlen(char *s)
 	for (j = 0; s[j] != '\0'; j++)
 	{
 		if (s[j] == ' ')
-			tr = 1;
-		else if (tr == 1)
-		{
 			tr = 0;
+		else if (tr == 0)
+		{
+			tr = 1;
 			words++;
 		}
 	}
