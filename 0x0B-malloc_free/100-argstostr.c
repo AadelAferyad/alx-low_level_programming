@@ -21,6 +21,7 @@ char *argstostr(int ac, char **av)
 		{
 			count++;
 		}
+		count++;
 	}
 	buffer = (char *) malloc(count + 1);
 	if (buffer == NULL)
