@@ -34,18 +34,20 @@ int w_strlen(char *s)
  */
 char **strtow(char *str)
 {
-	int i, k = 0, j = 0, words, end = 0, start = 0;
+	int i, l = 0, k = 0, j = 0, words, end = 0, start = 0;
 	char **buffer, *tmp;
 
 	if (!(str && *str))
 		return (NULL);
+	while (str[l])
+		l++;
 	words = w_strlen(str);
 	if (words == 0)
 		return (NULL);
 	buffer = (char **) malloc(sizeof(char *) * (words + 1));
 	if (buffer == NULL)
 		return (NULL);
-	for (i = 0; str[i]; i++)
+	for (i = 0; i <= i; i++)
 	{
 		if (str[i] == ' ' || str[i] == '\0')
 		{
