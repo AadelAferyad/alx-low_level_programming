@@ -43,8 +43,8 @@ char **strtow(char *str)
 	if (words == 0)
 		return (NULL);
 
-	if (matrix == NULL)
 	buffer = (char **) malloc(sizeof(char *) * (words + 1));
+	if (buffer == NULL)
 		return (NULL);
 
 	for (i = 0; i <= len; i++)
@@ -71,5 +71,5 @@ char **strtow(char *str)
 
 	buffer[k] = NULL;
 
-	return (matrix);
+	return (buffer);
 }
