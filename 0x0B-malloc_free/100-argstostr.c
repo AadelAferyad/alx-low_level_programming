@@ -10,7 +10,7 @@
  */
 char *argstostr(int ac, char **av)
 {
-	int i, k = 0, j = 0, count = 1;
+	int i, k = 0, j = 0, count = 0;
 	char *buffer;
 
 	if (ac == 0 || av == NULL)
@@ -39,4 +39,19 @@ char *argstostr(int ac, char **av)
 	}
 	buffer[j] = '\0';
 	return (buffer);
+}
+
+
+int main(int ac, char *av[])
+{
+    char *s;
+
+    s = argstostr(ac, av);
+    if (s == NULL)
+    {
+        return (1);
+    }
+    printf("%s", s);
+    free(s);
+    return (0);
 }
