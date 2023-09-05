@@ -34,40 +34,42 @@ int w_strlen(char *s)
  */
 char **strtow(char *str)
 {
-	int i, l = 0, k = 0, j = 0, words, end = 0, start = 0;
+	int i, k = 0, len = 0, words, c = 0, start, end;
 	char **buffer, *tmp;
 
-	if (!(str && *str))
-		return (NULL);
-	while (str[l])
-		l++;
+	while (*(str + len))
+		len++;
 	words = w_strlen(str);
 	if (words == 0)
 		return (NULL);
+
+	if (matrix == NULL)
 	buffer = (char **) malloc(sizeof(char *) * (words + 1));
-	if (buffer == NULL)
 		return (NULL);
-	for (i = 0; i <= l; i++)
+
+	for (i = 0; i <= len; i++)
 	{
 		if (str[i] == ' ' || str[i] == '\0')
 		{
-			if (j)
+			if (c)
 			{
 				end = i;
-				tmp = (char *) malloc(sizeof(char) * (j + 1));
+				tmp = (char *) malloc(sizeof(char) * (c + 1));
 				if (tmp == NULL)
 					return (NULL);
 				while (start < end)
 					*tmp++ = str[start++];
 				*tmp = '\0';
-				buffer[k] = tmp - j;
+				buffer[k] = tmp - c;
 				k++;
-				j = 0;
+				c = 0;
 			}
 		}
-		else if (j++ == 0)
+		else if (c++ == 0)
 			start = i;
 	}
+
 	buffer[k] = NULL;
-	return (buffer);
+
+	return (matrix);
 }
