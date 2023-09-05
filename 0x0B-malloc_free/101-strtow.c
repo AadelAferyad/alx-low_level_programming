@@ -47,7 +47,7 @@ char **strtow(char *str)
 	buffer = (char **) malloc(sizeof(char *) * (words + 1));
 	if (buffer == NULL)
 		return (NULL);
-	for (i = 0; i <= i; i++)
+	for (i = 0; i <= l; i++)
 	{
 		if (str[i] == ' ' || str[i] == '\0')
 		{
