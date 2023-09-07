@@ -1,5 +1,5 @@
 #include "main.h"
-#include <string.h>
+
 /**
  * _calloc - initializing allocated memory to 0.
  *
