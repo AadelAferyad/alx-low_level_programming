@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include <string.h>
 /**
  * _calloc - initializing allocated memory to 0.
  *
@@ -22,7 +22,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	if (p == NULL)
 		return (NULL);
 	ptr = (char *)p;
-	while (i < nmemb)
+	while (i < nmemb * size)
 	{
 		ptr[i] = 0;
 		i++;
