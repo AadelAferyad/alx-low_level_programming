@@ -28,7 +28,7 @@ int main(int ac, char **av)
 	operator = get_op_func(av[2]);
 	if (operator == NULL)
 	{
-		printf("Eroro\n");
+		printf("Error\n");
 		exit(99);
 	}
 	printf("%d\n", operator(a, b));
