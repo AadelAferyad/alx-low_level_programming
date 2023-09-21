@@ -1,3 +1,4 @@
+#include <string.h>
 #include "lists.h"
 
 /**
@@ -13,7 +14,6 @@ size_t print_list(const list_t *h)
 {
 	const list_t *local_head;
 	size_t n_element = 0;
-	int i = 0;
 
 	local_head = h;
 	while (local_head != NULL)
