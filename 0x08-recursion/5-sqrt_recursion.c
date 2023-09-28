@@ -17,7 +17,7 @@ int my_sqrt(int n, int a)
 		return (a);
 	else if (a * a > n)
 		return (-1);
-	return (_healper(n, a + 1));
+	return (my_sqrt(n, a + 1));
 }
 /**
  * _sqrt_recursion - returns the natural square root of a number
