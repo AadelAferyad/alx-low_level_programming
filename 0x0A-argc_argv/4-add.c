@@ -13,7 +13,7 @@
 
 int main(int argc, char **argv)
 {
-	int i = 1;
+	int i = 1, f = 0;
 	long int j = 0;
 
 	if (argc < 2)
@@ -23,12 +23,17 @@ int main(int argc, char **argv)
 	}
 	while (i < argc)
 	{
-		if (atoi(argv[i]) == 0)
+		f = 0;
+		while (argv[i][f])
 		{
-			printf("Error\n");
-			return (1);
+			if (argv[i][f] < '0' || argv[i][f] > '9')
+			{
+				printf("Error\n");
+				return (0);
+			}
+			f++;
 		}
-		j = j + atoi(argv[i]);
+		j += atoi(argv[i]);
 		i++;
 	}
 	printf("%ld\n", j);
