@@ -20,7 +20,7 @@ char *argstostr(int ac, char **av)
 		while (av[i][j])/*"amina" "bnt" "wahb"*/
 		{
 			size++;
-			j++;	
+			j++;
 		}
 		size++;
 		i++;
@@ -44,20 +44,4 @@ char *argstostr(int ac, char **av)
 	}
 	buffer[k] = '\0';
 	return (buffer);
-}
-
-
-
-int main(int ac, char *av[])
-{
-    char *s;
-
-    s = argstostr(ac, av);
-    if (s == NULL)
-    {
-        return (1);
-    }
-    printf("%s", s);
-    free(s);
-    return (0);
 }
