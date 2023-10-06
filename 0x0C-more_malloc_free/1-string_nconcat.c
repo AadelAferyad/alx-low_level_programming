@@ -35,8 +35,8 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	len_1 = _strlen(s1);
 	len_2 = _strlen(s2);
 	if (n >= len_2) /*"goodbye n = 3 len_2 = 7"*/
-		n = len_2;
-	string = malloc(sizeof(char) * (len_1 + n + 1));
+		n = len_2; /*"13" n = 5*/
+	string = malloc(len_1 + n + 1);
 	if (!string)
 		return (NULL);
 	while (i < len_1 + n)
