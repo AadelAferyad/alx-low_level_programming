@@ -14,7 +14,7 @@ unsigned int _strlen(char *s)
 		s = "";
 	while (s[len])
 		len++;
-	return (len++);
+	return (len);
 }
 /**
  * string_nconcat - allocate memory and fill it with concat string.
