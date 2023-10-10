@@ -1,20 +1,7 @@
 #include "dog.h"
 
-/**
- * _strlen - function that count length.
- *
- * @s: string.
- *
- * Return: return length.
- */
-int _strlen(char *s)
-{
-	int i = 0;
 
-	while (s[i])
-		i++;
-	return (i);
-}
+
 /**
  * _strdup - function that allocates a block of memory and initialize it.
  *
@@ -23,25 +10,26 @@ int _strlen(char *s)
  * Return: return allocated memory.
  */
 
-char *_strdup(char *s)
+char *_strdup(char *str)
 {
-	char *buffer;
-	int len, i = 0;
+	int i = 0;
+	char *p;
 
-	if (!s)
+	while (str[i])
+		i++;
+	p = (char *) malloc(i + 1);
+	if (p == NULL)
 		return (NULL);
-	len = _strlen(s);
-	buffer = malloc(len + 1);
-	if (!buffer)
-		return (NULL);
-	while (s[i])
+	i = 0;
+	while (str[i])
 	{
-		buffer[i] = s[i];
+		p[i] = str[i];
 		i++;
 	}
-	buffer[i] = '\0';
-	return (buffer);
+	p[i] = '\0';
+	return (p);
 }
+
 /**
  * new_dog - creates a new dog.
  * @name: name of the dog.
@@ -50,22 +38,25 @@ char *_strdup(char *s)
  *
  * Return: pointer to the new dog.
  */
+
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *node;
+	dog_t *d;
 
-	node = malloc(sizeof(dog_t));
-	if (node == NULL)
+	d = malloc(sizeof(dog_t));
+	if (d == NULL)
 		return (NULL);
-	node->name = _strdup(name);
-	node->owner = _strdup(owner);
-	if (!node->owner || !node->name)
+	(*d).name = _strdup(name);
+	(*d).owner = _strdup(owner);
+	if ((*d).name == NULL || (*d).owner == NULL)
 	{
-		free(node->name);
-		free(node->owner);
-		free(node);
+		free(d->name);
+		free(d->owner);
+		free(d);
 		return (NULL);
 	}
-	node->age = age;
-	return (node);
+
+	d->age = age;
+
+	return (d);
 }
