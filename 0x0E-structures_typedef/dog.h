@@ -1,5 +1,5 @@
-#ifndef _dog_
-#define _dog_
+#ifndef _FIORA_
+#define _FIORA_
 #include <stdio.h>
 #include <stdlib.h>
 /**
