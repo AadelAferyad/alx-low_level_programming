@@ -34,7 +34,7 @@ char *_strdup(char *s)
 	buffer = malloc(len + 1);
 	if (!buffer)
 		return (NULL);
-	while (i < len)
+	while (s[i])
 	{
 		buffer[i] = s[i];
 		i++;
@@ -54,8 +54,6 @@ dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *node;
 
-	if (!name || !owner)
-		return (NULL);
 	node = malloc(sizeof(dog_t));
 	if (node == NULL)
 		return (NULL);
