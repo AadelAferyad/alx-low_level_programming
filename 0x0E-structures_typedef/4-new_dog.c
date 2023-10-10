@@ -66,7 +66,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 		free(node->name);
 		free(node->owner);
 		free(node);
-		return (NULL);	
+		return (NULL);
 	}
 	node->age = age;
 	return (node);
