@@ -14,8 +14,6 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 	va_list liams;
 	unsigned int i = 0;
 
-	if (!n)
-		return;
 	va_start(liams, n);
 	while ((i++) < n)
 	{
