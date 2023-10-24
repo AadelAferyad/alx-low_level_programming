@@ -52,7 +52,7 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 		free(node);
 		return (NULL);
 	}
-	for (len = 0, position = *head; position || len <= idx ; len++)
+	for (len = 0, position = *head; position && len <= idx; len++)
 	{
 		if (len == idx)/*0-->0-->0--->0-->*/
 		{
