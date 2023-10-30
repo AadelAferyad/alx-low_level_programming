@@ -34,10 +34,7 @@ int create_file(const char *filename, char *text_content)
 	len = _strlean(text_content);
 	write_bytes = write(fp, text_content, len);
 	if (write_bytes == -1)
-	{
-		close(fp);
-		return (-1);
-	}
+		return (write_bytes);
 	close(fp);
 	return (1);
 }
