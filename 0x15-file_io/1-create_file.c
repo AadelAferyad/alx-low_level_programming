@@ -26,15 +26,21 @@ int create_file(const char *filename, char *text_content)
 {
 	int len, fp, write_bytes;
 
-	if (!filename)
-		return (-1);
 	fp = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
-	if (fp == -1)
+	if (fp == -1 || !filename)
 		return (-1);
+	if (!text_content)
+	{
+		close(fp);
+		return (1);
+	}
 	len = _strlean(text_content);
 	write_bytes = write(fp, text_content, len);
 	if (write_bytes == -1)
+	{
+		close(fp);
 		return (write_bytes);
+	}
 	close(fp);
 	return (1);
 }

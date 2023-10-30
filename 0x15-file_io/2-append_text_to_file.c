@@ -27,11 +27,14 @@ int append_text_to_file(const char *filename, char *text_content)
 {
 	int fp, read_bytes, len;
 
-	if (!filename)
-		return (-1);
 	fp = open(filename, O_WRONLY | O_APPEND);
-	if (fp == -1)
+	if (fp == -1 || !filename)
 		return (-1);
+	if (!text_content)
+	{
+		close(fp);
+		return (1);
+	}
 	len = _strlean(text_content);
 	read_bytes = write(fp, text_content, len);
 	if (read_bytes == -1)
