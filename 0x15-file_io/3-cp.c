@@ -13,7 +13,7 @@ void close_err(int file_from, int file_to)
 	}
 	if (close(file_to) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_to),exit(100);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_to), exit(100);
 	}
 }
 /**
@@ -40,7 +40,10 @@ int main(int ac, char **av)
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]), exit(99);
 	}
 	if (read_bytes == -1)
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]), exit(98);
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
 	if (file_to == -1 || write_bytes == -1)
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]), exit(99);
 	close_err(file_from, file_to);
