@@ -16,11 +16,15 @@ int function_betty(hash_node_t *node, const char *key, const char *value)
 		return (0);
 	node->key = strdup(key);
 	if (!(node->key))
+	{
+		free(node);
 		return (0);
+	}
 	node->value = strdup(value);
 	if (!(node->value))
 	{
 		free(node->key);
+		free(node);
 		return (0);
 	}
 	return (1);
