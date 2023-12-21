@@ -54,10 +54,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (ht->array[index] == NULL)
 	{
 		ht->array[index] = node;
-		if (index + 1 < ht->size)
-			ht->array[index]->next = ht->array[index + 1];
-		else
-			ht->array[index]->next = NULL;
+		if (index != 0)
+		{
+			if (ht->array[index - 1])
+				ht->array[index - 1]->next = ht->array[index];
+		}
 	}
 	else
 	{
@@ -66,8 +67,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 			if (ht->array[i] == NULL)
 			{
 				ht->array[i] = node;
-				if (i + 1 < ht->size)
-					ht->array[i]->next = ht->array[i + 1];
+				if (i != 0)
+					ht->array[i - 1]->next = ht->array[i];
 				else
 					ht->array[i]->next = NULL;
 				break;
