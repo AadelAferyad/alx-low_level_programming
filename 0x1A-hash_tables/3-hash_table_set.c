@@ -68,15 +68,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 			i++;
 		}
 	}
-	for (i = 0; i < ht->size; i++)
-	{
-		if (ht->array[i])
-		{
-			if (j != -1)
-				ht->array[(unsigned long int)j]->next = ht->array[i];
-			j = i;
-		}
-	}
-	ht->array[j]->next = NULL;
+
 	return (i < ht->size ? 1 : 0);
 }
