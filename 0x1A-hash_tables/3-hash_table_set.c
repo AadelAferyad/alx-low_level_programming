@@ -43,6 +43,7 @@ int function_betty(hash_node_t *node, const char *key, const char *value)
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index = 0, i = 0;
+	int j = -1;
 	hash_node_t *node = NULL;
 
 	if (!ht || !value)
@@ -54,11 +55,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (ht->array[index] == NULL)
 	{
 		ht->array[index] = node;
-		if (index != 0)
-		{
-			if (ht->array[index - 1])
-				ht->array[index - 1]->next = ht->array[index];
-		}
 	}
 	else
 	{
@@ -67,14 +63,20 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 			if (ht->array[i] == NULL)
 			{
 				ht->array[i] = node;
-				if (i != 0)
-					ht->array[i - 1]->next = ht->array[i];
-				else
-					ht->array[i]->next = NULL;
 				break;
 			}
 			i++;
 		}
 	}
+	for (i = 0; i < ht->size; i++)
+	{
+		if (ht->array[i])
+		{
+			if (j != -1)
+				ht->array[(unsigned long int)j]->next = ht->array[i];
+			j = i;
+		}
+	}
+
 	return (i < ht->size ? 1 : 0);
 }
