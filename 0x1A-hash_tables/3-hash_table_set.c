@@ -49,7 +49,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	index = key_index((const unsigned char *)key, ht->size);
 	node = malloc(sizeof(hash_node_t));
-	if (function_betty(node, key, value) == 0)
+	if (function_betty(node, key, value) == 0 || index >= ht->size)
 		return (0);
 	if (ht->array[index] == NULL)
 	{
