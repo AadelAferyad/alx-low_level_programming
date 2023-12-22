@@ -20,7 +20,10 @@ int function_betty(hash_node_t *node, const char *key, const char *value)
 		free(node);
 		return (0);
 	}
-	node->value = strdup(value);
+	if (!value)
+		node->value = strdup("");
+	else
+		node->value = strdup(value);
 	if (!(node->value))
 	{
 		free(node->key);
@@ -45,7 +48,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	unsigned long int index = 0, i = 0;
 	hash_node_t *node = NULL;
 
-	if (!ht || !value)
+	if (!ht)
 		return (0);
 	index = key_index((const unsigned char *)key, ht->size);
 	if (index >= ht->size)
