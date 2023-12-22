@@ -22,10 +22,7 @@ void hash_table_print(const hash_table_t *ht)
 	int bol = 0;
 
 	if (!ht)
-	{
-		printf("{}\n");
 		return;
-	}
 	putchar('{');
 	while (index < ht->size)
 	{
