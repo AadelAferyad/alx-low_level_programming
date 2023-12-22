@@ -16,7 +16,7 @@ void hash_table_delete(hash_table_t *ht)
 	if (!ht)
 		return;
 
-	while (index < ht->size)
+	for (; index < ht->size; index++)
 	{
 		if (ht->array[index])
 		{
@@ -30,9 +30,7 @@ void hash_table_delete(hash_table_t *ht)
 				tmp_node = inside_tmp;
 			}
 		}
-		index++;
 	}
-
 	free(ht->array);
 	free(ht);
 }
