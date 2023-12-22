@@ -43,7 +43,6 @@ int function_betty(hash_node_t *node, const char *key, const char *value)
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index = 0, i = 0;
-	int j = -1;
 	hash_node_t *node = NULL;
 
 	if (!ht || !value)
