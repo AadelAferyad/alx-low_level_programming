@@ -2,16 +2,25 @@
 
 
 /**
- * function_betty - ffunction helper for betty.
- * @node: node.
+ * hash_table_set - function that adds an element to the hash table.
+ * @ht: the hash table.
  * @key: the hash key.
  * @value: the value hash code will take.
  *
  * Return: 1 if it succeeded, 0 otherwise.
  */
 
-int function_betty(hash_node_t *node, const char *key, const char *value)
+int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
+	unsigned long int index = 0;
+	hash_node_t *node = NULL;
+
+	if (!ht)
+		return (0);
+	index = key_index((const unsigned char *)key, ht->size);
+	if (index >= ht->size)
+		return (0);
+	node = malloc(sizeof(hash_node_t));
 	if (!node)
 		return (0);
 	node->key = strdup(key);
@@ -26,62 +35,10 @@ int function_betty(hash_node_t *node, const char *key, const char *value)
 		node->value = strdup(value);
 	if (!(node->value))
 	{
-		free(node->key);
-		free(node);
+		free(node->key), free(node);
 		return (0);
 	}
+	node->next = ht->array[index];
+	ht->array[index] = node;
 	return (1);
-}
-
-
-/**
- * hash_table_set - function that adds an element to the hash table.
- * @ht: the hash table.
- * @key: the hash key.
- * @value: the value hash code will take.
- *
- * Return: 1 if it succeeded, 0 otherwise.
- */
-
-int hash_table_set(hash_table_t *ht, const char *key, const char *value)
-{
-	unsigned long int index = 0, i = 0, j = 0;
-	int k = -1;
-	hash_node_t *node = NULL;
-
-	if (!ht)
-		return (0);
-	index = key_index((const unsigned char *)key, ht->size);
-	if (index >= ht->size)
-		return (0);
-	node = malloc(sizeof(hash_node_t));
-	if (function_betty(node, key, value) == 0)
-		return (0);
-	if (ht->array[index] == NULL)
-	{
-		ht->array[index] = node;
-	}
-	else
-	{
-		while (i < ht->size)
-		{
-			if (ht->array[i] == NULL)
-			{
-				ht->array[i] = node;
-				break;
-			}
-			i++;
-		}
-	}
-	for (; j < ht->size; j++)
-	{
-		if (ht->array[j])
-		{
-			if (k != -1)
-				ht->array[(unsigned long int) k]->next = ht->array[j];
-			k = j;
-		}
-	}
-	ht->array[(unsigned long int) k]->next = NULL;
-	return (i < ht->size ? 1 : 0);
 }
