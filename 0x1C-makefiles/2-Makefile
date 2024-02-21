@@ -1,9 +1,9 @@
-all: create
-
 CC = gcc
 SRC = ${wildcard *.c}
 OBJ = ${SRC:.c=.o}
 NAME = school
+
+all: create
 
 create: $(OBJ)
 	${CC} ${OBJ} -o ${NAME}
